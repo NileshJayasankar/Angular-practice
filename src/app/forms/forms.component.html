@@ -1,0 +1,53 @@
+<!-- <p>forms works!</p> -->
+
+
+
+<div class="container" [formGroup]="profileForm" *ngIf="showform">
+    <label for="name">Name:</label>
+    <input id="name" type="text" placeholder="Enter name" formControlName="name">
+
+    <label for="name">Address:</label>
+    <input id="name" type="text" placeholder="Enter Address" formControlName="address">
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="Enter Email" formControlName="email">
+
+
+    <label for="number">Phone number:</label>
+    <input id="number" type="text" placeholder="Enter Phone number" formControlName="phone">
+
+    <label for="name">website:</label>
+    <input id="name" type="text" placeholder="Enter name" formControlName="website">
+
+
+</div>
+
+<button (click)="onsave()">Save</button>
+<button (click)="showform = false">Cancel</button>
+        
+<table *ngIf="!showform">
+    <tr>
+        <th>ID:</th>
+        <th>Name:</th>
+        <th>Email:</th>
+        <th>Phone number:</th>
+        <th>Address:</th>
+        <th>website:</th>
+        <th>Action Column</th>
+    </tr>
+    <tr *ngFor="let user of data">
+    <td>{{ user.id }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.phone }}</td>
+    <td>{{ user.address.city}}</td>
+    <td>{{ user.website }}</td>
+    <td>
+        <button (click)="updateUser(user.id)">✏️</button>
+        <button (click)="deleteUser(user.id)">🗑️</button>
+        <button (click)="viewUser(user.id)">👁️</button>
+    </td>
+
+  </tr>
+
+</table>
